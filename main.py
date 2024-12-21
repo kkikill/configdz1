@@ -67,12 +67,6 @@ class ShellEmulator:
         files = self.list_directory()
         return "\n".join(files[-10:])  # последние 10 строк
 
-    def who(self):
-        return self.hostname
-
-    def rev(self):
-        return self.current_dir[::-1]
-
     def execute_command(self, command):
         command = command.replace('\\', '/')
         parts = command.strip().split()
@@ -92,11 +86,6 @@ class ShellEmulator:
                 return "No directory specified."
         elif cmd == "exit":
             sys.exit(0)
-        elif cmd == "who":
-            return self.who()
-        elif cmd == "rev":
-            return self.rev()
-        elif cmd == "history":
             return self.history_command()
         elif cmd == "uniq":
             return self.uniq_command()
